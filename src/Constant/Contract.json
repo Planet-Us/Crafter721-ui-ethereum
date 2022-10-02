@@ -1,6 +1,4 @@
 {
-    "baobabRPCURL" : "https://api.baobab.klaytn.net:8651/",
-    "mainnetRPCURL" : "https://public-node-api.klaytnapi.com/v1/cypress",
 	"NFTABI": [
         {
             "inputs": [
@@ -511,7 +509,7 @@
                 },
                 {
                     "internalType": "bytes",
-                    "name": "_data",
+                    "name": "data",
                     "type": "bytes"
                 }
             ],
