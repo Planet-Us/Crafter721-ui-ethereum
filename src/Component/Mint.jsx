@@ -48,21 +48,18 @@ export default function Mint(props) {
     
   const whiteListCheck = async (init) =>{
     if(process.env.REACT_APP_WHITELIST == "true"){
-      let ret = await axios.get(WLData.whiteList)
-      .then(async (Response) => {
-        whiteList = Response.data.items;
+        whiteList = WLData.whiteList;
         let flag = 0;
         for(let i = 0; i<whiteList.length;i++){
-          if(account.toUpperCase() == whiteList[i].address.toUpperCase()){
+          if(account.toUpperCase() == whiteList[i].toUpperCase()){
             flag = 1;
             WLFlag = 1;
-            console.log(whiteList[i].address.toUpperCase());
+            console.log(whiteList[i].toUpperCase());
           }
         }
         if(flag == 0){
           WLFlag = 0;
         }
-      })
     }
     let liveDate = process.env.REACT_APP_START_BLOCK;       
     const timeStmp = web3.eth.getBlockNumber();   
@@ -150,7 +147,6 @@ export default function Mint(props) {
         'Mint number is more than max count. 최대발행갯수보다 많은 수의 발행을 시도하였습니다.',
       );
     }
-    console.log("AA");
     if(process.env.REACT_APP_WHITELIST == "true" && WLFlag != 1){
       alert("해당 주소는 민팅 대상 화이트리스트에 포함되어있지 않습니다.");
     }else {
